@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "gallery": "apps/gallery",
     "shell": "apps/shell"
   }
 }
