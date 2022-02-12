@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GalleryFacade } from '@app-shell/shared/data-store';
+import { map } from 'rxjs';
 
 @Component({
     selector: 'app-shell-home',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-    constructor() { }
+    cats = this.galleryFacade.selectedCats$.pipe(
+        map((selectedCats: any) => Array.from(selectedCats.values()))) as any;
+
+    constructor(private galleryFacade: GalleryFacade) {
+    }
 
     ngOnInit(): void {
+        this.cats.subscribe((response: any) => {
+            console.log(response);
+        });
     }
 
 }

@@ -1,10 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StoreModule } from '@ngrx/store';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
-import * as fromGallery from './state/gallery.reducer';
+import { StoreModule } from '@ngrx/store';
+
+import { GalleryApiService } from './api/gallery-api.service';
 import { GalleryEffects } from './state/gallery.effects';
 import { GalleryFacade } from './state/gallery.facade';
+import * as fromGallery from './state/gallery.reducer';
 
 @NgModule({
     declarations: [],
@@ -15,7 +18,8 @@ import { GalleryFacade } from './state/gallery.facade';
             fromGallery.reducer
         ),
         EffectsModule.forFeature([GalleryEffects]),
+        HttpClientModule
     ],
-    providers: [GalleryFacade],
+    providers: [GalleryFacade, GalleryApiService],
 })
 export class GalleryStoreModule { }
