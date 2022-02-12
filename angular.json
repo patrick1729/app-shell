@@ -1,7 +1,6 @@
 {
   "version": 2,
   "projects": {
-    "shell": "apps/shell",
-    "shell-e2e": "apps/shell-e2e"
+    "shell": "apps/shell"
   }
 }
