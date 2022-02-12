@@ -7,15 +7,15 @@ import { GalleryEffects } from './state/gallery.effects';
 import { GalleryFacade } from './state/gallery.facade';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    StoreModule.forFeature(
-      fromGallery.GALLERY_FEATURE_KEY,
-      fromGallery.reducer
-    ),
-    EffectsModule.forFeature([GalleryEffects]),
-  ],
-  providers: [GalleryFacade],
+    declarations: [],
+    imports: [
+        CommonModule,
+        StoreModule.forFeature(
+            fromGallery.GALLERY_FEATURE_KEY,
+            fromGallery.reducer
+        ),
+        EffectsModule.forFeature([GalleryEffects]),
+    ],
+    providers: [GalleryFacade],
 })
-export class GalleryStoreModule {}
+export class GalleryStoreModule { }

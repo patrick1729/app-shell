@@ -3,8 +3,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 /* eslint-disable */
 
 @Component({
-  selector: 'app-shell-nx-welcome',
-  template: `
+    selector: 'app-shell-nx-welcome',
+    template: `
     <!--
      * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      This is a starter component and can be deleted.
@@ -840,10 +840,10 @@ nx affected:e2e</pre>
       </div>
     </div>
   `,
-  encapsulation: ViewEncapsulation.None,
+    encapsulation: ViewEncapsulation.None,
 })
 export class NxWelcomeComponent implements OnInit {
-  constructor() {}
+    constructor() { }
 
-  ngOnInit(): void {}
+    ngOnInit(): void { }
 }

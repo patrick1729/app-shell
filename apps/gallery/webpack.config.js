@@ -13,80 +13,80 @@ const share = mf.share;
  * the location of the generated temporary tsconfig file.
  */
 const tsConfigPath =
-  process.env.NX_TSCONFIG_PATH ??
-  path.join(__dirname, '../../tsconfig.base.json');
+    process.env.NX_TSCONFIG_PATH ??
+    path.join(__dirname, '../../tsconfig.base.json');
 
 const workspaceRootPath = path.join(__dirname, '../../');
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
-  tsConfigPath,
-  [
-    /* mapped paths to share */
-    '@app-shell/shared/data-store'
-  ],
-  workspaceRootPath
+    tsConfigPath,
+    [
+        /* mapped paths to share */
+        '@app-shell/shared/data-store'
+    ],
+    workspaceRootPath
 );
 
 module.exports = {
-  output: {
-    uniqueName: 'gallery',
-    publicPath: 'auto',
-  },
-  optimization: {
-    runtimeChunk: false,
-  },
-  experiments: {
-    outputModule: true,
-  },
-  resolve: {
-    alias: {
-      ...sharedMappings.getAliases(),
+    output: {
+        uniqueName: 'gallery',
+        publicPath: 'auto',
     },
-  },
-  plugins: [
-    new ModuleFederationPlugin({
-      name: 'gallery',
-      filename: 'remoteEntry.js',
-      exposes: {
-        './Module': 'apps/gallery/src/app/remote-entry/entry.module.ts',
-      },
-      shared: share({
-        '@angular/core': {
-          singleton: true,
-          strictVersion: true,
-          requiredVersion: 'auto',
-          includeSecondaries: true,
+    optimization: {
+        runtimeChunk: false,
+    },
+    experiments: {
+        outputModule: true,
+    },
+    resolve: {
+        alias: {
+            ...sharedMappings.getAliases(),
         },
-        '@angular/common': {
-          singleton: true,
-          strictVersion: true,
-          requiredVersion: 'auto',
-          includeSecondaries: true,
-        },
-        '@angular/common/http': {
-          singleton: true,
-          strictVersion: true,
-          requiredVersion: 'auto',
-          includeSecondaries: true,
-        },
-        '@angular/router': {
-          singleton: true,
-          strictVersion: true,
-          requiredVersion: 'auto',
-          includeSecondaries: true,
-        },
-        rxjs: {
-          singleton: true,
-          strictVersion: true,
-          requiredVersion: 'auto',
-          includeSecondaries: true,
-        },
-        ...sharedMappings.getDescriptors(),
-      }),
-      library: {
-        type: 'module',
-      },
-    }),
-    sharedMappings.getPlugin(),
-  ],
+    },
+    plugins: [
+        new ModuleFederationPlugin({
+            name: 'gallery',
+            filename: 'remoteEntry.js',
+            exposes: {
+                './Module': 'apps/gallery/src/app/remote-entry/entry.module.ts',
+            },
+            shared: share({
+                '@angular/core': {
+                    singleton: true,
+                    strictVersion: true,
+                    requiredVersion: 'auto',
+                    includeSecondaries: true,
+                },
+                '@angular/common': {
+                    singleton: true,
+                    strictVersion: true,
+                    requiredVersion: 'auto',
+                    includeSecondaries: true,
+                },
+                '@angular/common/http': {
+                    singleton: true,
+                    strictVersion: true,
+                    requiredVersion: 'auto',
+                    includeSecondaries: true,
+                },
+                '@angular/router': {
+                    singleton: true,
+                    strictVersion: true,
+                    requiredVersion: 'auto',
+                    includeSecondaries: true,
+                },
+                rxjs: {
+                    singleton: true,
+                    strictVersion: true,
+                    requiredVersion: 'auto',
+                    includeSecondaries: true,
+                },
+                ...sharedMappings.getDescriptors(),
+            }),
+            library: {
+                type: 'module',
+            },
+        }),
+        sharedMappings.getPlugin(),
+    ],
 };

@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-shell-gallery-entry',
-  template: `<div class="remote-entry">
+    selector: 'app-shell-gallery-entry',
+    template: `<div class="remote-entry">
     <h2>gallery's Remote Entry Component</h2>
   </div>`,
-  styles: [
-    `
+    styles: [
+        `
       .remote-entry {
         background-color: #143055;
         color: white;
         padding: 5px;
       }
     `,
-  ],
+    ],
 })
-export class RemoteEntryComponent {}
+export class RemoteEntryComponent { }

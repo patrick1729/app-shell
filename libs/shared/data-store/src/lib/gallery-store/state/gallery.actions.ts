@@ -4,11 +4,11 @@ import { GalleryEntity } from './gallery.models';
 export const init = createAction('[Gallery Page] Init');
 
 export const loadGallerySuccess = createAction(
-  '[Gallery/API] Load Gallery Success',
-  props<{ gallery: GalleryEntity[] }>()
+    '[Gallery/API] Load Gallery Success',
+    props<{ gallery: GalleryEntity[] }>()
 );
 
 export const loadGalleryFailure = createAction(
-  '[Gallery/API] Load Gallery Failure',
-  props<{ error: any }>()
+    '[Gallery/API] Load Gallery Failure',
+    props<{ error: any }>()
 );
